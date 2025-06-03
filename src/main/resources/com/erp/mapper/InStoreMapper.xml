@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp.mapper.InStoreMapper">
+
+    <resultMap id="BaseResultMap" type="com.erp.pojo.InStore">
+            <id property="insId" column="ins_id" />
+            <result property="storeId" column="store_id" />
+            <result property="productId" column="product_id" />
+            <result property="inNum" column="in_num" />
+            <result property="createBy" column="create_by" />
+            <result property="createTime" column="create_time" />
+            <result property="isIn" column="is_in" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ins_id,store_id,product_id,in_num,create_by,create_time,
+        is_in
+    </sql>
+    <select id="queryInStoreListMapper" resultType="com.erp.pojo.InStore">
+        SELECT instore.*,item.item_name,store.store_name FROM t_in_store instore
+        INNER JOIN t_item item on item.id = instore.product_id
+        INNER JOIN t_store store on store.store_id = instore.store_id
+    </select>
+</mapper>
