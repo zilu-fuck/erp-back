@@ -3,6 +3,8 @@ package com.erp.mapper;
 import com.erp.pojo.OutStore;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
 * @author s1897
 * @description 针对表【t_out_store(出库单)】的数据库操作Mapper
@@ -10,7 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @Entity com.erp.pojo.OutStore
 */
 public interface OutStoreMapper extends BaseMapper<OutStore> {
-
+    public List<OutStore> queryOutStoreMapper();
 }
 
 

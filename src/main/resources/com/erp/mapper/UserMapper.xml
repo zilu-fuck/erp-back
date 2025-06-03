@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.erp.pojo.User">
+            <id property="id" column="id" />
+            <result property="uname" column="uname" />
+            <result property="upwd" column="upwd" />
+            <result property="phone" column="phone" />
+            <result property="edu" column="edu" />
+            <result property="age" column="age" />
+            <result property="title" column="title" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,uname,upwd,phone,edu,age,
+        title
+    </sql>
+<!--    保存数据，数据库id自增，将保存后的产生的id封装到传入的user参数的id属性中-->
+    <insert id="saveUserMapper" parameterType="com.erp.pojo.UserRole" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user values (null,#{uname},#{upwd},#{phone},#{edu},#{age},#{title})
+    </insert>
+</mapper>

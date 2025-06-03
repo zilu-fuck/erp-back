@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp.mapper.OrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.erp.pojo.Order">
+            <id property="id" column="id" />
+            <result property="custId" column="cust_id" />
+            <result property="itemId" column="item_id" />
+            <result property="orderDate" column="order_date" />
+            <result property="state" column="state" />
+            <result property="payment" column="payment" />
+            <result property="payMoney" column="pay_money" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,cust_id,item_id,order_date,state,payment,
+        pay_money
+    </sql>
+<!--    定义sql语句，统计客户历史销售总额-->
+    <select id="queryCountHisDataMapper" resultType="com.erp.dto.HisData">
+        select cust_id custId,sum(pay_money) hisTotal from t_order GROUP BY cust_id
+    </select>
+
+    <select id="queryOrderListMapper" resultType="com.erp.pojo.Order">
+        SELECT
+            ord.*,
+            customer.cust_name AS custName,
+            item.item_name AS itemName
+        FROM
+            t_customer customer
+                INNER JOIN
+            t_order ord ON customer.id = ord.cust_id
+                INNER JOIN
+            t_item item ON item.id = ord.item_id
+        <where>
+            <if test="id!=null">
+                ord.id=#{id}
+            </if>
+            <if test="state!=null and state!=''">
+                and state=#{state}
+            </if>
+            <if test="custName!=null and custName!=''">
+                and cust_name=#{custName}
+            </if>
+            <if test="itemName!=null and itemName!=''">
+                and item_name=#{itemName}
+            </if>
+        </where>
+        ORDER BY
+        ord.id ASC
+    </select>
+</mapper>

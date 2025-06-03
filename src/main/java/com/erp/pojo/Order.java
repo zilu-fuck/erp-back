@@ -4,72 +4,69 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.math.BigDecimal;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- * 出库单
- * @TableName t_out_store
+ * 
+ * @TableName t_order
  */
-@TableName(value ="t_out_store")
+@TableName(value ="t_order")
 @Data
-public class OutStore {
+public class Order {
     /**
      * 
      */
     @TableId(type = IdType.AUTO)
-    private Integer outsId;
+    private Integer id;
 
     /**
      * 
      */
-    private Integer productId;
+    private Integer custId;
 
     /**
      * 
      */
-    private Integer storeId;
+    private Integer itemId;
 
     /**
      * 
      */
-    private Integer tallyId;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date orderDate;
 
     /**
      * 
      */
-    private BigDecimal outPrice;
+    private String state;
 
     /**
      * 
      */
-    private Integer outNum;
+    private String payment;
 
     /**
      * 
      */
-    private Integer createBy;
+    private Double payMoney;
 
-    /**
-     * 
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date createTime;
-
-    /**
-     * 0 否 1 是
-     */
-    private String isOut;
+    private Integer num;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
     @TableField(exist = false)
-    private String storeName;
+    private String custName;
 
     @TableField(exist = false)
     private String itemName;
+
+    @TableField(exist = false)
+    private Integer pageNum=1;
+    @TableField(exist = false)
+    private Integer pageSize=3;
 }

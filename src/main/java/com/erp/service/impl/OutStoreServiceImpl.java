@@ -6,12 +6,17 @@ import com.erp.pojo.Item;
 import com.erp.pojo.OutStore;
 import com.erp.service.OutStoreService;
 import com.erp.mapper.OutStoreMapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
 * @author s1897
@@ -49,6 +54,17 @@ public class OutStoreServiceImpl extends ServiceImpl<OutStoreMapper, OutStore>
         //实现出库单信息的保存
         outStoreMapper.insert(outStore);
 
+    }
+
+    @Override
+    public Map<String, Object> queryOutStoreListMapper(Integer pageNum, Integer pageSize) {
+        Map<String,Object> result = new HashMap<>();
+        Page<Object> page = PageHelper.startPage(pageNum,pageSize);
+
+        List<OutStore> outStores = outStoreMapper.queryOutStoreMapper();
+        result.put("total",page.getTotal());
+        result.put("outStore",outStores);
+        return result;
     }
 }
 

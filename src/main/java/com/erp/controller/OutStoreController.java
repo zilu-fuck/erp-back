@@ -29,4 +29,11 @@ public class OutStoreController {
         }
         return result;
     }
+
+    @GetMapping("/outStoreList")
+    public Map<String,Object> outStoreList(@RequestParam(defaultValue = "1")Integer pageNum,
+                                           @RequestParam(defaultValue ="3")Integer pageSize){
+        return outStoreService.queryOutStoreListMapper(pageNum,pageSize);
+
+    }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp.mapper.SellJhMapper">
+
+    <resultMap id="BaseResultMap" type="com.erp.pojo.SellJh">
+            <id property="id" column="id" />
+            <result property="custId" column="cust_id" />
+            <result property="channelId" column="channel_id" />
+            <result property="money" column="money" />
+            <result property="nowStep" column="now_step" />
+            <result property="empId" column="emp_id" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,cust_id,channel_id,money,now_step,emp_id
+    </sql>
+
+    <select id="querySellJhListMapper" resultType="com.erp.pojo.SellJh">
+        SELECT sell.*,customer.cust_name FROM t_sell_jh sell INNER JOIN t_customer customer on sell.cust_id=customer.id
+    </select>
+</mapper>
