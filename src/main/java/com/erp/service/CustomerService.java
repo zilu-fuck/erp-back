@@ -1,5 +1,6 @@
 package com.erp.service;
 
+import com.erp.dto.CountResult;
 import com.erp.pojo.Customer;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -17,4 +18,6 @@ public interface CustomerService extends IService<Customer> {
 
 //    查询所有客户的id和姓名
     public List<Customer> queryCustIdNameListService();
+
+    public List<CountResult> countCustomerService();
 }
