@@ -51,4 +51,17 @@
         ORDER BY
         ord.id ASC
     </select>
+
+    <select id="querySellYearMapper" resultType="java.lang.Integer">
+        SELECT DISTINCT year(order_date) year FROM t_order
+    </select>
+
+<!--    统计某年十二个月的销售额 -->
+    <select id="querySellMonthMapper" resultType="com.erp.dto.SellResult" parameterType="java.lang.String">
+    SELECT MONTH(order_date) month,sum(pay_money) sum FROM t_order
+    WHERE year(order_date) =#{year}
+    GROUP BY month
+    order by month
+    </select>
+
 </mapper>

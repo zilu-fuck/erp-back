@@ -3,6 +3,7 @@ package com.erp.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.erp.dto.CountResult;
 import com.erp.mapper.UserRoleMapper;
 import com.erp.pojo.User;
 import com.erp.pojo.UserRole;
@@ -95,6 +96,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         wrapper.eq("uid",id);
         userRoleMapper.delete(wrapper);
 
+    }
+
+    @Override
+    public List<CountResult> countUserByAgeService() {
+        return userMapper.countUserByAgeMapper();
+    }
+
+    @Override
+    public List<CountResult> countUserByEduService() {
+        return userMapper.countUserByEduMapper();
     }
 
 }

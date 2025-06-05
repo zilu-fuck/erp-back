@@ -1,5 +1,6 @@
 package com.erp.mapper;
 
+import com.erp.dto.CountResult;
 import com.erp.pojo.AfterSales;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.erp.pojo.Order;
@@ -16,6 +17,9 @@ public interface AfterSalesMapper extends BaseMapper<AfterSales> {
 
     /*实现售后数据多条件分页查询*/
     public List<AfterSales> queryAfterSaleMapper(AfterSales afterSales);
+
+    //    统计售后投诉类型
+    public List<CountResult> countQuestionMapper();
 
 }
 

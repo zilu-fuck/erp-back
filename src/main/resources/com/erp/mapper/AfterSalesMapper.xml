@@ -34,4 +34,16 @@
             </if>
         </where>
     </select>
+    <select id="countQuestionMapper" resultType="com.erp.dto.CountResult">
+        SELECT count value,concat(question,':',ROUND(count/total*100,2),'%') name FROM(
+            SELECT
+            question,
+            COUNT(id) AS count,
+            (SELECT COUNT(id) FROM t_after_sales) AS total
+            FROM
+            t_after_sales
+            GROUP BY
+            question
+            )out_table
+    </select>
 </mapper>

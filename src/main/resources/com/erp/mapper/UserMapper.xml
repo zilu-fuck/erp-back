@@ -22,4 +22,27 @@
     <insert id="saveUserMapper" parameterType="com.erp.pojo.UserRole" useGeneratedKeys="true" keyProperty="id">
         insert into t_user values (null,#{uname},#{upwd},#{phone},#{edu},#{age},#{title})
     </insert>
+
+    <select id="countUserByAgeMapper" resultType="com.erp.dto.CountResult">
+        SELECT count(id) 'value',
+                CASE
+                    WHEN age &gt;= 18 and age &lt;= 25 THEN
+                        '[18 - 25]'
+                    WHEN age &gt;= 26 and age &lt;= 30 THEN
+                        '[26 - 30]'
+                    WHEN age &gt;= 31 and age &lt;= 35 THEN
+                        '[31 - 35]'
+                    WHEN age &gt;= 36 and age &lt;= 41 THEN
+                        '[36 - 41]'
+                    WHEN age &gt;= 42 and age &lt;= 47 THEN
+                        '[42 - 47]'
+                    ELSE
+                        '[56 - 100]'
+                    END 'name'
+        FROM t_user
+        GROUP BY name
+    </select>
+    <select id="countUserByEduMapper" resultType="com.erp.dto.CountResult">
+        SELECT edu name,COUNT(id) value FROM t_user GROUP BY edu
+    </select>
 </mapper>

@@ -2,6 +2,7 @@ package com.erp.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.erp.dto.CountResult;
 import com.erp.pojo.User;
 import com.erp.service.UserRoleService;
 import com.erp.service.UserService;
@@ -98,6 +99,18 @@ public class UserController {
             ex.printStackTrace();
         }
         return result;
+    }
+
+//    处理员工年龄分布统计
+    @GetMapping("/countEmpAge")
+    public List<CountResult> countEmpAge(){
+        return userService.countUserByAgeService();
+    }
+
+//    处理员工学历分布统计
+    @GetMapping("/countEmpEdu")
+    public List<CountResult> countEmpEdu(){
+        return userService.countUserByEduService();
     }
 
 }

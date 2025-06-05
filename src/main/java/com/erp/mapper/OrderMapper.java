@@ -1,6 +1,7 @@
 package com.erp.mapper;
 
 import com.erp.dto.HisData;
+import com.erp.dto.SellResult;
 import com.erp.pojo.Order;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -20,6 +21,12 @@ public interface OrderMapper extends BaseMapper<Order> {
 
 //    实现订单数据多条件分页动态查询
     public List<Order> queryOrderListMapper(Order order);
+
+//    统计查询销售数据的年份
+    public List<Integer> querySellYearMapper();
+
+//    统计查询某个年份十二个月的销售额
+    public List<SellResult> querySellMonthMapper(String year);
 }
 
 
