@@ -18,4 +18,6 @@ public interface AfterSalesService extends IService<AfterSales> {
 
 //    统计售后投诉接口
     public List<CountResult> countQuestionService();
+
+    public List<CountResult> countQuestionStateService();
 }

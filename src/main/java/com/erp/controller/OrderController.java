@@ -30,9 +30,14 @@ public class OrderController {
     public List<Map<String,Object>> queryYear(){
         return orderService.querySellYearService();
     }
-
+//    处理某年12个月销售额的请求
     @GetMapping("/countSell")
     public Map<String,Object> countSell(String year){
         return orderService.querySellMonthService(year);
+    }
+//    处理年12个月，每个月销售数量统计的请求
+    @GetMapping("/countSellNum")
+    public Map<String,Object> countSellNum(String year){
+        return orderService.querySellNumService(year);
     }
 }

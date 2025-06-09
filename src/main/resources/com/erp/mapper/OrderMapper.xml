@@ -63,5 +63,12 @@
     GROUP BY month
     order by month
     </select>
+<!--    统计某年每个月的销售额   -->
+    <select id="countSellNumMapper" resultType="com.erp.dto.SellResult">
+        SELECT MONTH(order_date) month,SUM(num) sum FROM t_order
+        WHERE YEAR(order_date) = #{year}
+        GROUP BY month
+        ORDER BY month
+    </select>
 
 </mapper>

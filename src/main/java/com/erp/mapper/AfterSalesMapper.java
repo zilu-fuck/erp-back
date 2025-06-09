@@ -21,6 +21,9 @@ public interface AfterSalesMapper extends BaseMapper<AfterSales> {
     //    统计售后投诉类型
     public List<CountResult> countQuestionMapper();
 
+    //    统计售后投诉处理状态结果
+    public List<CountResult> countQuestionStateMapper();
+
 }
 
 

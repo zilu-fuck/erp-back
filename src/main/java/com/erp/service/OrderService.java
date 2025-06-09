@@ -20,4 +20,6 @@ public interface OrderService extends IService<Order> {
     public List<Map<String,Object>> querySellYearService();
 
     public Map<String,Object> querySellMonthService(String year);
+//    统计年每个月销售商品的数量
+    public Map<String,Object> querySellNumService(String year);
 }

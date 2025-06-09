@@ -46,4 +46,16 @@
             question
             )out_table
     </select>
+    <select id="countQuestionStateMapper" resultType="com.erp.dto.CountResult">
+        SELECT count value,concat(state,' : ',ROUND((count/total)*100,2),"%") name FROM
+            (
+            SELECT state,count(id) count,
+            (
+            SELECT COUNT(id)
+            FROM t_after_sales
+            ) total
+            FROM t_after_sales
+            GROUP BY state
+            )out_table
+    </select>
 </mapper>

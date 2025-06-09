@@ -27,4 +27,9 @@ public class AfterSalesController {
         return afterSalesService.countQuestionService();
     }
 
+    @GetMapping("/countState")
+    public List<CountResult> countState(){
+        return afterSalesService.countQuestionStateService();
+    }
+
 }

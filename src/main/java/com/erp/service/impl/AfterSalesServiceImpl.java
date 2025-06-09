@@ -43,6 +43,11 @@ public class AfterSalesServiceImpl extends ServiceImpl<AfterSalesMapper, AfterSa
     public List<CountResult> countQuestionService() {
         return afterSalesMapper.countQuestionMapper();
     }
+
+    @Override
+    public List<CountResult> countQuestionStateService() {
+        return afterSalesMapper.countQuestionStateMapper();
+    }
 }
 
 
